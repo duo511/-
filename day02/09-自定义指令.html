@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+        需求: 进入页面, 自动获取input焦点
+        dom操作 => input.focus()  自动获取焦点
+
+        1. 定义指令
+        Vue.directive(指令名, {...})
+        2. 使用指令
+        v-指令名
+     -->
+    <div id="app">
+        <input type="text">
+        <input type="text">
+        <input type="text">
+        <input type="text" v-focus>
+        <input type="text">
+    </div>
+
+    <script src="./vue.js"></script>
+    <script>
+        Vue.directive('focus', {
+            // inserted是一个函数, 会在指令所在元素被插入到页面中时执行
+            inserted(el) {
+                // el element元素 => 就是指令所在的元素
+                el.focus()
+            }
+        })
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                msg: 'hello vue'
+            }
+        })
+    </script>
+</body>
+
+</html>

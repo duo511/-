@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <h2 v-if='flag'>{{ msg }}</h2>
+        <h2 v-show='flag'>{{ msg }}</h2>
+    </div>
+    <script src="./vue.js"></script>
+    <script>
+        // v-if: 显示隐藏, 直接删除添加元素
+        // v-show: 显示隐藏, 相当于display: block
+        // v-fi适用只切换一次, v-show使用频繁切换
+
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                msg: 'hello vue',
+                flag: true
+                    // flag: false
+            }
+        })
+    </script>
+</body>
+
+</html>

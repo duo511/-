@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+        axios 只是一个基于原生ajax封装的插件工具
+        使用: 
+        1. 下载 npm i axios
+        2. 引包
+        3. 发送请求
+
+        axios({
+            method: 请求方式  // get post put patch delete
+            url: 请求地址  // http://localhost:3000/list
+            data:{}  // 参数对象, 在body请求体中传递, post put patch
+            params:{}  // 参数对象, 在url地址中传递, get delete
+        }).then(success).catch(err)
+     -->
+    <script src="./node_modules/axios/dist/axios.js"></script>
+    <script>
+        // 1. 获取全部数据
+        // axios({
+        //     method: 'get',
+        //     url: 'http://localhost:3000/list',
+        // }).then(res => {
+        //     console.log(res.data);
+        // }).then(err => {
+        //     console.log(err);
+        // })
+
+        // 2. 按照条件查询数据
+        // axios({
+        //     method: 'get',
+        //     url: 'http://localhost:3000/list?name_like=裤'
+        // }).then(res => {
+        //     console.log(res.data);
+        // })
+
+        // axios({
+        //     method: 'get',
+        //     url: 'http://localhost:3000/list',
+        //     params: {
+        //         name_like: '裤'
+        //     }
+        // }).then(res => console.log(res.data))
+
+        // 3. 添加数据
+        axios({
+            method: 'post',
+            url: 'http://localhost:3000/list',
+            data: {
+                name: '宝马车',
+                price: 999
+            }
+        }).then(res => {
+            console.log(res.data);
+        }).then(err => {
+            console.log(err);
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <div>{{ msg }}</div>
+        <div v-text='msg'></div>
+        <div v-html='msg'></div>
+    </div>
+    <script src="./vue.js"></script>
+    <script>
+        // v-text: 相当于innerText, 不解析标签
+        // v-html: 相当于innerHTML, 解析标签
+        // 插值表达式
+        // {{ msg }}
+        // {{ obj.msg }}
+        // {{ msg.toUpperCase() }}
+        // {{ 三元表达式 }}
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                msg: '<h1>hello world</h1>'
+            }
+        })
+    </script>
+</body>
+
+</html>

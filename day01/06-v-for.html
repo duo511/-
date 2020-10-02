@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <ul>
+            <li v-for='item in arr'>{{ item }}</li>
+        </ul>
+        <ul>
+            <li v-for='(item, index) in arr'>{{ index }}: {{ item }}</li>
+        </ul>
+        <ul>
+            <li v-for='(value, prop) in obj'>{{ prop }} : {{ value }}</li>
+        </ul>
+    </div>
+    <script src="./vue.js"></script>
+    <script>
+        // v-for 循环遍历数组对象
+        // v-for='item in 数组名'  item每一项
+        // v-for='(item, index) in 数组名' index下标
+        // v-for='(value, prop) in 对象名' value属性值 prop属性名
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                msg: 'hello vue',
+                arr: ['苹果', '西瓜', '榴莲', '芒果'],
+                obj: {
+                    name: 'dd',
+                    age: 18
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
