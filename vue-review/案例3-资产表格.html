@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" />
+    <style>
+        .search {
+            width: 250px;
+            margin: 20px 0;
+        }
+
+        .red {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <div class="container">
+            <!-- 搜索 -->
+            <input v-model='key' v-focus type="text" class="form-control search" placeholder="输入关键字进行搜索">
+            <!-- 表格 -->
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>编号</th>
+                        <th>资产名称</th>
+                        <th>资产价格</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for='(item, index) in showList' :key='item.id'>
+                        <td>{{ index + 1 }}</td>
+                        <td>{{ item.name }}</td>
+                        <td :class='{red: item.price > 100}'>{{ item.price | money}}</td>
+                        <td><a @click='del(item.id)' href="javascript:;">删除</a></td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="4">共计 {{ total | money }} 元</td>
+                    </tr>
+                </tfoot>
+            </table>
+            <!-- 添加资产 -->
+            <form class="form-inline">
+                <input v-model.trim='name' type="text" class="form-control" placeholder="资产名称">
+                &nbsp;&nbsp;
+                <input v-model.number='price' type="text" class="form-control" placeholder="资产价格">
+                &nbsp;&nbsp;
+                <button @click.prevent='add' class="btn btn-primary">添加资产</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="./vue.js"></script>
+    <script>
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                list: [
+                    { id: 1, name: '外套', price: 99 },
+                    { id: 2, name: '裤子', price: 34 },
+                    { id: 3, name: '鞋', price: 25.4 },
+                    { id: 4, name: '头发', price: 199 }
+                ],
+                name: '',
+                price: '',
+                key: ''
+            },
+            methods: {
+                del(id) {
+                    this.list = this.list.filter(item => item.id != id)
+                },
+                add() {
+                    if (this.name === '') return
+                    if (this.price === '' || this.price <= 0) return
+                    this.list.push({
+                        id: +new Date(),
+                        name: this.name,
+                        price: this.price
+                    })
+                    this.name = ''
+                    this.price = ''
+                }
+            },
+            filters: {
+                money: value => '¥' + value.toFixed(2)
+            },
+            directives: {
+                focus: {
+                    inserted(el) {
+                        el.focus()
+                    }
+                }
+            },
+            computed: {
+                total() {
+                    let totalPrice = 0
+                    this.showList.forEach(item => totalPrice += item.price)
+                    return totalPrice
+                },
+                showList() {
+                    return this.list.filter(item => {
+                        if (item.name.includes(this.key)) {
+                            return true
+                        } else {
+                            return false
+                        }
+                    })
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

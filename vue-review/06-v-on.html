@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <button v-on:click='isShow = !isShow'>点击</button>
+        <button v-on:click='fn1'>点击</button>
+        <button v-on:click='fn2(2)'>点击</button>
+        <button @click='isShow = !isShow'>点击</button>
+        <button @click='fn1'>点击</button>
+        <button @click='fn2(20)'>点击</button>
+        <p v-show='isShow'>{{ msg }}</p>
+    </div>
+
+    <script src="./vue.js"></script>
+    <script>
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                msg: 'hello vue',
+                isShow: true
+            },
+            methods: {
+                fn1() {
+                    this.isShow = !this.isShow
+                },
+                fn2(a) {
+                    console.log(a);
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

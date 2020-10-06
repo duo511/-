@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <ul>
+            <li v-for='item in list' :key='item.id'> {{ item.name }}{{ item.price }}</li>
+        </ul>
+    </div>
+
+    <script src="./vue.js"></script>
+    <script>
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                msg: 'hello vue',
+                list: [
+                    { id: 1, name: '苹果', price: '1.8', num: '10斤' },
+                    { id: 2, name: '鸭梨', price: '5.8', num: '20斤' },
+                    { id: 3, name: '榴莲', price: '9.8', num: '50斤' },
+                    { id: 4, name: '西瓜', price: '11.8', num: '60斤' }
+                ]
+            }
+        })
+    </script>
+</body>
+
+</html>

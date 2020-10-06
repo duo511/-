@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+        axios({
+            method: 请求方式, // get/post/delete/put/patch
+            url: 请求地址,
+            data: 参数对象, // 这个参数对象会在请求体中进行提交 post/put/patch
+            parmas: 参数对象 // 这个参数对象会在地址栏中拼接提交 get/delete
+        }).then(成功的函数).catch(失败的函数)      
+    -->
+
+    <script src="./node_modules/axios/dist/axios.js"></script>
+    <script>
+        // 获取全部数据
+        // axios({
+        //     methid: 'get',
+        //     url: 'http://localhost:3000/list',
+        // }).then(res => {
+        //     console.log(res.data);
+        // })
+
+        // 按照条件查询数据
+        // axios({
+        //     method: 'get',
+        //     url: 'http://localhost:3000/list',
+        //     params: {
+        //         name_like: '鞋'
+        //     }
+        // }).then(res => console.log(res.data))
+
+        // 添加数据
+        axios({
+            method: 'post',
+            url: 'http://localhost:3000/list',
+            data: {
+                name: '运动鞋',
+                price: 199
+            }
+        }).then(res => console.log(res.data))
+    </script>
+</body>
+
+</html>

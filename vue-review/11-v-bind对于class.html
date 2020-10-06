@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <style>
+        .base {
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+        }
+
+        .blue {
+            background-color: blue;
+        }
+
+        .large {
+            width: 400px;
+            height: 400px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 
+        :class='对象'
+        {类名: 布尔值, 类名: 布尔值}
+        :class='数组'
+        ['类名1', '类名2']
+        :class='对象/数组'
+        直接内联写在结构中(重点)
+    -->
+    <div id="app">
+        <div class="base" :class='obj'>我是盒子</div>
+        <hr>
+        <div class="base" :class='arr'>我是盒子</div>
+        <hr>
+        <div class="base" :class='{blue: isBlue , large: isLarge}'></div>
+    </div>
+
+    <script src="./vue.js"></script>
+    <script>
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                msg: 'hello vue',
+                obj: {
+                    blue: false,
+                    large: true
+                },
+                arr: ['blue', 'large'],
+                isBlue: true,
+                isLarge: true
+            }
+        })
+    </script>
+</body>
+
+</html>
